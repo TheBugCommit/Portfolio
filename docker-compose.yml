@@ -1,4 +1,4 @@
-version: '3.5'
+version: '3.8'
 
 services:
   portfolio_backend:
@@ -9,7 +9,7 @@ services:
         UID: $U_ID
     restart: unless-stopped
     volumes:
-      - .:/var/www:delegated
+      - ./:/var/www:delegated
     ###> XDEBUG 3 ###
     # Use your client IP here
     # Linux: run "ip a | grep docker0"
@@ -23,7 +23,7 @@ services:
     networks:
       - portfolio_network
     depends_on:
-      - portfolio_backend_mysql
+      - postgres_database
 #    command: symfony serve --dir=apps/frontend/frontend/public --port=9090
 
   portfolio_backoffice_front:
@@ -36,7 +36,7 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - .:/var/www:delegated
+      - ./:/var/www:delegated
     depends_on:
       - portfolio_backend
     networks:
@@ -52,33 +52,51 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - .:/var/www:delegated
+      - ./:/var/www:delegated
     depends_on:
       - portfolio_backend
     networks:
       - portfolio_network
 
-  portfolio_backend_mysql:
-    container_name: portfolio_backend_mysql
-    image: mysql:8.0.26
+#  portfolio_backend_mysql:
+#    container_name: portfolio_backend_mysql
+#    image: mysql:8.0.26
+#    ports:
+#      - '3336:3306'
+#    environment:
+#      MYSQL_DATABASE: portfolio
+#      MYSQL_ROOT_PASSWORD: root
+#    volumes:
+#      - portfolio_backend_mysql_data:/var/lib/mysql
+##    healthcheck:
+##      test: [ "CMD", "mysqladmin", "--user=root", "--password=", "--host=127.0.0.1", "ping", "--silent" ]
+##      interval: 2s
+##      timeout: 10s
+##      retries: 10
+#    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci', '--default-authentication-plugin=mysql_native_password' ]
+#    networks:
+#      - portfolio_network
+
+  postgres_database:
+    container_name: postgres_database
+    image: postgres:${POSTGRES_VERSION:-15}-alpine
     ports:
-      - '3336:3306'
+      - "5432:5432"
     environment:
-      MYSQL_DATABASE: portfolio
-      MYSQL_ROOT_PASSWORD: root
-    volumes:
-      - portfolio_backend_mysql_data:/var/lib/mysql
-#    healthcheck:
-#      test: [ "CMD", "mysqladmin", "--user=root", "--password=", "--host=127.0.0.1", "ping", "--silent" ]
-#      interval: 2s
-#      timeout: 10s
-#      retries: 10
-    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci', '--default-authentication-plugin=mysql_native_password' ]
+      POSTGRES_DB: ${POSTGRES_DB:-portfolio}
+      # You should definitely change the password in production
+      POSTGRES_USER: ${POSTGRES_USER:-root}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-root}
     networks:
       - portfolio_network
+    volumes:
+      - database_data:/var/lib/postgresql/data:rw
+      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
+      # - ./docker/db/data:/var/lib/postgresql/data:rw
 
 networks:
   portfolio_network:
 
 volumes:
-  portfolio_backend_mysql_data:
+#  portfolio_backend_mysql_data:
+  database_data:

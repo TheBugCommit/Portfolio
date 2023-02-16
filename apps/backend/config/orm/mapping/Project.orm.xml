@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doctrine-mapping xmlns="https://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
+                                      https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="App\Entity\Project">
+        <id name="id" type="string" column-definition="CHAR(36) NOT NULL"/>
+        <field name="title" length="50" />
+        <field name="img" length="100" />
+        <field name="description" length="100" />
+        <field name="isDeveloping" column="is_developing" type="boolean"/>
+        <field name="createdOn" column="created_on" type="datetime"/>
+        <field name="updatedOn" column="updated_on" type="datetime"/>
+
+        <unique-constraints>
+            <unique-constraint name="U_title_project" columns="title"/>
+        </unique-constraints>
+    </entity>
+</doctrine-mapping>
