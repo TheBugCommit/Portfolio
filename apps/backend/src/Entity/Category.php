@@ -11,7 +11,7 @@ class Category
     private string $description;
     private string $icon;
 
-    public function __construct(string $name, string $description, string $icon,
+    public function __construct(string $name, ?string $description, string $icon,
                                 private readonly UuidFactory $uuidFactory)
     {
         $this->id = $this->uuidFactory->create()->toRfc4122();
@@ -37,9 +37,9 @@ class Category
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }

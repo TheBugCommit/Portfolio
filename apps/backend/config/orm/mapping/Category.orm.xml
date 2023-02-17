@@ -6,7 +6,7 @@
     <entity name="App\Entity\Category">
         <id name="id" type="string" column-definition="CHAR(36) NOT NULL"/>
         <field name="name" length="20" />
-        <field name="description" length="100" />
+        <field name="description" nullable="true" length="100" />
         <field name="icon" length="100" />
 
         <unique-constraints>
