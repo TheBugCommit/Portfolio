@@ -6,7 +6,7 @@ namespace App\Entity;
 
 use Symfony\Component\Uid\Factory\UuidFactory;
 
-//TODO refactor to DDD arquitecture
+//TODO refactor to DDD architecture
 
 class Project
 {
@@ -16,6 +16,7 @@ class Project
     private string $description;
     private bool $isDeveloping;
     private $categories;
+    private $devTechnologies;
     private \DateTime $createdOn;
     private \DateTime $updatedOn;
 
@@ -26,6 +27,8 @@ class Project
         $this->img = $img;
         $this->description = $description;
         $this->isDeveloping = $isDeveloping;
+        $this->categories = [];
+        $this->devTechnologies = [];
         $this->createdOn = new \DateTime();
         $this->markAsUpdated();
     }
@@ -119,6 +122,41 @@ class Project
     public function addCategory(Category $category) : void
     {
         $this->categories[] = $category;
+    }
+
+    /**
+     * @return array
+     */
+    public function getDevTechnologies() : array
+    {
+        return $this->devTechnologies; //TODO Refactor to return an iterator
+    }
+
+    /**
+     * @return void
+     */
+    public function removeAllDevTechnology() : void
+    {
+        $this->devTechnologies = [];
+    }
+
+    public function removeDevTechnologyById(int $id) : ?DevTechnology //TODO create search by criteria
+    {
+        foreach ($this->devTechnologies as $key => $devTechnology)
+        {
+            if($id == $devTechnology->getId())
+            {
+                array_splice($this->devTechnologies, $key, 1);
+                return $devTechnology;
+            }
+        }
+
+        return null;
+    }
+
+    public function addDevTechnology(DevTechnology $devTechnology) : void
+    {
+        $this->devTechnologies[] = $devTechnology;
     }
 
     public function markAsUpdated(): void
