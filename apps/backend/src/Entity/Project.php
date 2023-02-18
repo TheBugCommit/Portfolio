@@ -6,6 +6,8 @@ namespace App\Entity;
 
 use Symfony\Component\Uid\Factory\UuidFactory;
 
+//TODO refactor to DDD arquitecture
+
 class Project
 {
     private string $id;
@@ -13,6 +15,7 @@ class Project
     private string $img;
     private string $description;
     private bool $isDeveloping;
+    private $categories;
     private \DateTime $createdOn;
     private \DateTime $updatedOn;
 
@@ -81,6 +84,41 @@ class Project
     public function getUpdatedOn(): \DateTime
     {
         return $this->updatedOn;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCategories() : array
+    {
+        return $this->categories; //TODO Refactor to return an iterator
+    }
+
+    /**
+     * @return void
+     */
+    public function removeAllCategories() : void
+    {
+        $this->categories = [];
+    }
+
+    public function removeCategoryById(int $id) : ?Category //TODO create search by criteria
+    {
+        foreach ($this->categories as $key => $category)
+        {
+            if($id == $category->getId())
+            {
+                array_splice($this->categories, $key, 1);
+                return $category;
+            }
+        }
+
+        return null;
+    }
+
+    public function addCategory(Category $category) : void
+    {
+        $this->categories[] = $category;
     }
 
     public function markAsUpdated(): void
