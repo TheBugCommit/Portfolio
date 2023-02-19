@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
-
-
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Uid\Factory\UuidFactory;
 
 //TODO refactor to DDD architecture
@@ -15,8 +17,8 @@ class Project
     private string $img;
     private string $description;
     private bool $isDeveloping;
-    private $categories;
-    private $devTechnologies;
+    private Collection $categories;
+    private Collection $devTechnologies;
     private \DateTime $createdOn;
     private \DateTime $updatedOn;
 
@@ -27,8 +29,8 @@ class Project
         $this->img = $img;
         $this->description = $description;
         $this->isDeveloping = $isDeveloping;
-        $this->categories = [];
-        $this->devTechnologies = [];
+        $this->categories = new ArrayCollection();
+        $this->devTechnologies = new ArrayCollection();
         $this->createdOn = new \DateTime();
         $this->markAsUpdated();
     }
@@ -90,11 +92,12 @@ class Project
     }
 
     /**
-     * @return array
+     * @return array | \ArrayIterator|\Traversable
+     * @throws \Exception
      */
-    public function getCategories() : array
+    public function getCategories() : array | \ArrayIterator|\Traversable
     {
-        return $this->categories; //TODO Refactor to return an iterator
+        return $this->categories->getIterator();
     }
 
     /**
@@ -102,17 +105,16 @@ class Project
      */
     public function removeAllCategories() : void
     {
-        $this->categories = [];
+        $this->categories->clear();
     }
 
     public function removeCategoryById(int $id) : ?Category //TODO create search by criteria
     {
-        foreach ($this->categories as $key => $category)
+        foreach ($this->categories->getValues() as $key => $category)
         {
             if($id == $category->getId())
             {
-                array_splice($this->categories, $key, 1);
-                return $category;
+                return $this->categories->remove($key);
             }
         }
 
@@ -121,15 +123,16 @@ class Project
 
     public function addCategory(Category $category) : void
     {
-        $this->categories[] = $category;
+        $this->categories->add($category);
     }
 
     /**
-     * @return array
+     * @return array | \ArrayIterator|\Traversable
+     * @throws \Exception
      */
-    public function getDevTechnologies() : array
+    public function getDevTechnologies() : array | \ArrayIterator|\Traversable
     {
-        return $this->devTechnologies; //TODO Refactor to return an iterator
+        return $this->devTechnologies->getIterator();
     }
 
     /**
@@ -137,17 +140,16 @@ class Project
      */
     public function removeAllDevTechnology() : void
     {
-        $this->devTechnologies = [];
+        $this->devTechnologies->clear();
     }
 
     public function removeDevTechnologyById(int $id) : ?DevTechnology //TODO create search by criteria
     {
-        foreach ($this->devTechnologies as $key => $devTechnology)
+        foreach ($this->devTechnologies->getValues() as $key => $devTechnology)
         {
             if($id == $devTechnology->getId())
             {
-                array_splice($this->devTechnologies, $key, 1);
-                return $devTechnology;
+                return $devTechnology->remove($key);
             }
         }
 
@@ -156,7 +158,7 @@ class Project
 
     public function addDevTechnology(DevTechnology $devTechnology) : void
     {
-        $this->devTechnologies[] = $devTechnology;
+        $this->devTechnologies->add($devTechnology);
     }
 
     public function markAsUpdated(): void
