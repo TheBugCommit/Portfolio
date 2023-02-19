@@ -10,12 +10,13 @@ class Category
 {
     private string $id;
     private string $name;
-    private string $description;
+    private ?string $description;
     private string $icon;
+    private UuidFactory $uuidFactory;
 
-    public function __construct(string $name, ?string $description, string $icon,
-                                private readonly UuidFactory $uuidFactory)
+    public function __construct(string $name, string $icon, ?string $description)
     {
+        $this->uuidFactory = new UuidFactory();
         $this->id = $this->uuidFactory->create()->toRfc4122();
         $this->name = $name;
         $this->description = $description;
