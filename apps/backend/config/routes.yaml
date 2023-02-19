@@ -5,6 +5,11 @@ controllers:
     type: attribute
 
 app.user.create:
-    path: /api/category
+    path: /api/category/create
     controller: App\Controller\CreateCategoryAction
+    methods: [ POST ]
+
+app.user.update:
+    path: /api/category/update
+    controller: App\Controller\UpdateCategoryAction
     methods: [ POST ]
