@@ -4,12 +4,12 @@ controllers:
         namespace: App\Controller
     type: attribute
 
-app.user.create:
+app.category.create:
     path: /api/category/create
     controller: App\Controller\CreateCategoryAction
     methods: [ POST ]
 
-app.user.update:
+app.category.update:
     path: /api/category/update
     controller: App\Controller\UpdateCategoryAction
     methods: [ POST ]
