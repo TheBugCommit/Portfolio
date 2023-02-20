@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Entity\DevTechnology;
+use App\Portfolio\Shared\Infrastrocture\Persistence\Doctrine\DoctrineRepository;
 
-class DevTechnologyRepository extends DoctrineBaseRepository
+class DevTechnologyRepository extends DoctrineRepository
 {
     public function save(DevTechnology $devTechnology) : void
     {
-        $this->saveEntity($devTechnology);
+        $this->save($devTechnology);
     }
 
     public function remove(DevTechnology $devTechnology) : void
     {
-        $this->removeEntity($devTechnology);
+        $this->remove($devTechnology);
     }
 
     public function findOneById(string $id) : ?DevTechnology

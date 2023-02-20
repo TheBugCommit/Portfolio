@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Entity;
+namespace App\Portfolio\DevTechnology\Domain;
 
 use Symfony\Component\Uid\Factory\UuidFactory;
 

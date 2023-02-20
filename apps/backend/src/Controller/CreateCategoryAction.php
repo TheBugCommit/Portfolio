@@ -4,35 +4,29 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Services\CreateCategoryService;
+use App\Porfolio\Category\Application\CreateCategory;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 final class CreateCategoryAction
 {
-    public function __construct(private readonly CreateCategoryService $createCategoryService)
-    {
-    }
+    public function __construct(private readonly CreateCategory $createCategory) {}
 
     public function __invoke(Request $request) : JsonResponse
     {
-        $name = $request->request->get("name");
-        $icon = $request->request->get("icon");
-        $description = $request->request->get("description");
+        $name        = (string) $request->request->get("name");
+        $icon        = (string) $request->request->get("icon");
+        $description = (string) $request->request->get("description");
 
-        $category = $this->createCategoryService->__invoke(
-            null === $name ? null : (string) $name,
-            null === $icon ? null : (string) $icon,
-            null === $description ? null : (string) $description
-        );
+        $category = $this->createCategory->__invoke($name, $icon, $description);
 
         return new JsonResponse(
             [
-                'id'            =>  $category->getId(),
-                'name'          =>  $category->getName(),
-                'icon'          =>  $category->getIcon(),
-                'description'   =>  $category->getDescription()
+                'id'            =>  $category->id(),
+                'name'          =>  $category->name(),
+                'icon'          =>  $category->icon(),
+                'description'   =>  $category->description()
             ],
             Response::HTTP_OK,
             ['Access-Control-Allow-Origin' => '*']

@@ -4,18 +4,20 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Entity\Project;
+use App\Portfolio\Project\Domain\Project;
+use App\Portfolio\Project\Domain\ProjectRepository;
+use App\Portfolio\Shared\Infrastrocture\Persistence\Doctrine\DoctrineRepository;
 
-class ProjectRepository extends DoctrineBaseRepository
+class DoctrineProjectRepository extends DoctrineRepository implements ProjectRepository
 {
     public function save(Project $project) : void
     {
-        $this->saveEntity($project);
+        $this->save($project);
     }
 
     public function remove(Project $project) : void
     {
-        $this->removeEntity($project);
+        $this->remove($project);
     }
 
     public function findOneById(string $id) : ?Project
