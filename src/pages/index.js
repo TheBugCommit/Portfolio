@@ -13,6 +13,15 @@ export default function Index() {
                     }
                 </ul>
             </section>
+            <section id="about">
+                <ul>
+                    {
+                        projects.map((proj) =>
+                            <Project key={proj.name} value={proj} />
+                        )
+                    }
+                </ul>
+            </section>
         </>
     )
 }
