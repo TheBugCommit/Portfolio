@@ -1,8 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     env : {
-        GITHUB_USERNAME: 'TheBugCommit'
-    }
+        GITHUB: {
+            USERNAME: 'TheBugCommit',
+            API: 'https://api.github.com/',
+        }
+    },
 }
 
 module.exports = nextConfig

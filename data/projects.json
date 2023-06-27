@@ -1,0 +1,38 @@
+[
+  {
+    "url": "https://github.com/TheBugCommit/CalendarOrganizer",
+    "name": "Calendar Organizer",
+    "description": null,
+    "languages": {
+      "JavaScript": 54,
+      "HTML": 39
+    }
+  },
+  {
+    "url": "https://github.com/TheBugCommit/CalendarOrganizerDesktop",
+    "name": "Calendar Organizer Desktop",
+    "description": null,
+    "languages": {
+      "Java": 100
+    }
+  },
+  {
+    "url": "https://github.com/TheBugCommit/ClassicGameCollection",
+    "name": "Classic Game Collection",
+    "description": "A collection of classic games, available to play online.",
+    "languages": {
+      "Vue": 43,
+      "CSS": 39,
+      "HTML": 11,
+      "TypeScript": 8
+    }
+  },
+  {
+    "url": "https://github.com/TheBugCommit/Portfolio",
+    "name": "Portfolio",
+    "description": "A simple portfolio, to make my skills known to the world of work",
+    "languages": {
+      "JavaScript": 100
+    }
+  }
+]

@@ -1,0 +1,60 @@
+{
+    "name": "Gerard Casas Serarols",
+    "birth": "03/10/2002",
+    "img": "",
+    "about": {
+        "title": "",
+        "content": ""
+    },
+    "experience": {
+        "start": 2018,
+        "education": [
+            {
+                "start": 2018,
+                "end": 2020,
+                "studies": "IC10 CFGM Sistemas microinformáticos y redes", 
+                "company": "Milà i Fontanals",
+                "company_url": "https://agora.xtec.cat/iesmila/"
+            },
+            {
+                "start": 2020,
+                "end": 2022,
+                "studies": "ICC0 CFGS Desarrollo de aplicaciones web",
+                "work": {
+                    "company": "Databis",
+                    "company_url": "https://databis.net/"
+                },
+                "company": "Milà i Fontanals",
+                "company_url": "https://agora.xtec.cat/iesmila/"
+            },
+            {
+                "start": 2022,
+                "studies": "Grado en Ingeniería Informática", 
+                "company": "URV ETSE",
+                "company_url": "https://www.etse.urv.cat/es/"
+            }
+        ]
+    },
+    "social": [
+        {
+            "name": "GitHub",
+            "link": "https://github.com/TheBugCommit",
+            "icon": ""
+        },
+        {
+            "name": "Instagram",
+            "link": "https://github.com/TheBugCommit",
+            "icon": ""
+        },
+        {
+            "name": "LinkedIn",
+            "link": "https://github.com/TheBugCommit",
+            "icon": ""
+        },
+        {
+            "name": "Email",
+            "link": "g3casas@gmail.com",
+            "icon": ""
+        }
+    ]
+}
