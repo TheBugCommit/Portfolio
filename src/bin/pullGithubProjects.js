@@ -1,16 +1,12 @@
-import { splitStringByUppercase } from '@/utils/utils';
-import getProjectLanguages from '../../services/getProjectLanguages';
+import { splitStringByUppercase } from '../utils/utils.js';
 import { writeFile } from 'fs/promises';
 import path from 'path';
 
-const url = `${process.env.GITHUB.API}users/${process.env.GITHUB.USERNAME}/repos`;
+const url = 'https://api.github.com/users/TheBugCommit/repos';
 const projectsPath = path.join(process.cwd(), 'data/projects.json');
 
-const pullGithubProjects = async (req, res) => {
+const pullGithubProjects = async () => {
   try {
-    if (req.method !== 'PATCH')
-      throw new Error(`Method ${req.method} isn't supported`);
-
     const response = await fetch(url);
 
     if (!response.ok)
@@ -18,15 +14,12 @@ const pullGithubProjects = async (req, res) => {
 
     const projects = await parseProjectsResponse(await response.json());
 
-    await writeFile(projectsPath, JSON.stringify(projects, null, 2))
-
-    res.send({
-      message: 'Projects refreshed succesfully',
-    });
+    await writeFile(projectsPath, JSON.stringify(projects, null, 2));
+    
+    console.info("Projects updated succefully!!🚀");
+    console.dir(projects)
   } catch (error) {
-    res.status(500).send({
-      message: error.message,
-    })
+    console.trace(error)
   }
 };
 
@@ -48,6 +41,17 @@ const getProjectLanguagesByPercentage = async (project, minPercentage) => {
   }
 
   return filteredLanguages;
+}
+
+const getProjectLanguages = async (project) => {
+  const response = await fetch(`https://api.github.com/repos/TheBugCommit/${project}/languages`);
+
+  if (!response.ok)
+      throw new Error(response.statusText);
+
+  const languages = await response.json();
+
+  return languages;
 }
 
 const parseProjectsResponse = async (data) => {
@@ -98,4 +102,4 @@ const parseProjectsResponse = async (data) => {
   })
 }
 
-export default pullGithubProjects;
+pullGithubProjects();

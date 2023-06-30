@@ -1,4 +1,4 @@
-import splitStringByUppercase from "./splitStringByUppercase";
+import splitStringByUppercase from "./splitStringByUppercase.js";
 
 export {
     splitStringByUppercase,
