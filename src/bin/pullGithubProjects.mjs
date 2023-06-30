@@ -1,4 +1,4 @@
-import { splitStringByUppercase } from '../utils/utils.js';
+import { splitStringByUppercase } from '../utils/utils.mjs';
 import { writeFile } from 'fs/promises';
 import path from 'path';
 
