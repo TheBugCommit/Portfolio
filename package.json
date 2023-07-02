@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "pullProjects": "node ./src/bin/pullGithubProjects.mjs",
+    "pullProjects": "set GIT_USER=TheBugCommit&& node ./src/bin/pullGithubProjects.mjs",
     "lint": "next lint"
   },
   "dependencies": {

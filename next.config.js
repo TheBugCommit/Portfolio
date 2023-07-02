@@ -6,6 +6,16 @@ const nextConfig = {
             API: 'https://api.github.com/',
         }
     },
+    images: {
+        remotePatterns: [
+          {
+            protocol: 'https',
+            hostname: 'raw.githubusercontent.com',
+            port: '',
+            pathname: '/TheBugCommit/**',
+          },
+        ],
+      },
 }
 
 module.exports = nextConfig

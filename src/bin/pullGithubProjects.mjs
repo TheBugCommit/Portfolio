@@ -2,8 +2,8 @@ import { splitStringByUppercase } from '../utils/utils.mjs';
 import { writeFile } from 'fs/promises';
 import path from 'path';
 
-const url = 'https://api.github.com/users/TheBugCommit/repos';
-const projectsPath = path.join(process.cwd(), 'data/projects.json');
+const url = `https://api.github.com/users/${process.env.GIT_USER}/repos`;
+const projectsPath = path.join(process.cwd(), 'src/config/projects.json');
 
 const pullGithubProjects = async () => {
   try {
@@ -44,7 +44,7 @@ const getProjectLanguagesByPercentage = async (project, minPercentage) => {
 }
 
 const getProjectLanguages = async (project) => {
-  const response = await fetch(`https://api.github.com/repos/TheBugCommit/${project}/languages`);
+  const response = await fetch(`https://api.github.com/repos/${process.env.GIT_USER}/${project}/languages`);
 
   if (!response.ok)
       throw new Error(response.statusText);
@@ -54,30 +54,13 @@ const getProjectLanguages = async (project) => {
   return languages;
 }
 
+const getProjectImageUrl = (project, branch) => {
+    return `https://raw.githubusercontent.com/${process.env.GIT_USER}/${project}/${branch}/preview.jpg`
+}
+
 const parseProjectsResponse = async (data) => {
-  const jsonApiProps = [
-    {
-      prop: 'url',
-      githubProp: 'html_url',
-    },
-    {
-      prop: 'name',
-      githubProp: 'name',
-      callback: splitStringByUppercase,
-    },
-    {
-      prop: 'description',
-      githubProp: 'description',
-    },
-    {
-      prop: 'languages',
-      githubProp: 'languages_url',
-    }
-  ];
-
-
   let languages = data.map(project => {
-    return getProjectLanguagesByPercentage(project.name, 5)
+    return getProjectLanguagesByPercentage(project.name, 10)
   })
   languages = await Promise.all(languages)
 
@@ -87,13 +70,19 @@ const parseProjectsResponse = async (data) => {
     jsonApiProps.forEach(apiProp => {
       let value;
 
-      if (apiProp?.callback)
-        value = apiProp.callback(project[apiProp.githubProp])
+      if (apiProp?.callback){
+        const props = apiProp.callbackProps?.map(prop => {
+          return project[prop]
+        });
+
+        value = apiProp.callback(...props)
+      }
       else if (apiProp.prop == 'languages') {
         value = languages[index]
       }
-      else
+      else{
         value = project[apiProp.githubProp];
+      }
 
       obj[apiProp.prop] = value;
     })
@@ -101,5 +90,30 @@ const parseProjectsResponse = async (data) => {
     return obj;
   })
 }
+
+const jsonApiProps = [
+  {
+    prop: 'url',
+    githubProp: 'html_url',
+  },
+  {
+    prop: 'name',
+    callbackProps: ['name'],
+    callback: splitStringByUppercase,
+  },
+  {
+    prop: 'description',
+    githubProp: 'description',
+  },
+  {
+    prop: 'languages',
+    githubProp: 'languages_url',
+  },
+  {
+    prop: 'img',
+    callbackProps: ['name', 'default_branch'],
+    callback: getProjectImageUrl,
+  }
+];
 
 pullGithubProjects();

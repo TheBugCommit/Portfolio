@@ -1,0 +1,26 @@
+{
+    "name": "Gerard Casas",
+    "birth": "2002-10-03",
+    "img": "",
+    "social": [
+        {
+            "name": "GitHub",
+            "link": "https://github.com/TheBugCommit",
+            "icon": ""
+        },
+        {
+            "name": "Instagram",
+            "link": "https://github.com/TheBugCommit",
+            "icon": ""
+        },
+        {
+            "name": "LinkedIn",
+            "link": "https://github.com/TheBugCommit",
+            "icon": ""
+        }
+    ],
+    "contact": {
+        "email": "g3casas@gmail.com",
+        "icon": ""
+    }
+}

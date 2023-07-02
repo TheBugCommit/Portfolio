@@ -1,5 +1,5 @@
 const splitStringByUppercase = (string) => {
-    return string.match(/[A-Z][a-z]+|[0-9]+/g).join(" ");
+    return string.split(/(?=[A-Z])/).join(" ");
 }
 
 export default splitStringByUppercase;

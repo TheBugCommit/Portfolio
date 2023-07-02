@@ -1,0 +1,26 @@
+[
+    {
+        "start": 2018,
+        "end": 2020,
+        "studies": "IC10 CFGM Sistemas microinformáticos y redes",
+        "company": "Milà i Fontanals",
+        "company_url": "https://agora.xtec.cat/iesmila/"
+    },
+    {
+        "start": 2020,
+        "end": 2022,
+        "studies": "ICC0 CFGS Desarrollo de aplicaciones web",
+        "work": {
+            "company": "Databis",
+            "company_url": "https://databis.net/"
+        },
+        "company": "Milà i Fontanals",
+        "company_url": "https://agora.xtec.cat/iesmila/"
+    },
+    {
+        "start": 2022,
+        "studies": "Grado en Ingeniería Informática",
+        "company": "URV ETSE",
+        "company_url": "https://www.etse.urv.cat/es/"
+    }
+]

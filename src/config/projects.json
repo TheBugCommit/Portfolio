@@ -6,7 +6,8 @@
     "languages": {
       "JavaScript": 54,
       "HTML": 39
-    }
+    },
+    "img": "https://raw.githubusercontent.com/TheBugCommit/CalendarOrganizer/main/preview.jpg"
   },
   {
     "url": "https://github.com/TheBugCommit/CalendarOrganizerDesktop",
@@ -14,18 +15,18 @@
     "description": null,
     "languages": {
       "Java": 100
-    }
+    },
+    "img": "https://raw.githubusercontent.com/TheBugCommit/CalendarOrganizerDesktop/main/preview.jpg"
   },
   {
     "url": "https://github.com/TheBugCommit/ClassicGameCollection",
     "name": "Classic Game Collection",
     "description": "A collection of classic games, available to play online.",
     "languages": {
-      "Vue": 43,
-      "CSS": 39,
-      "HTML": 11,
-      "TypeScript": 8
-    }
+      "JavaScript": 75,
+      "Vue": 10
+    },
+    "img": "https://raw.githubusercontent.com/TheBugCommit/ClassicGameCollection/main/preview.jpg"
   },
   {
     "url": "https://github.com/TheBugCommit/Portfolio",
@@ -33,6 +34,7 @@
     "description": "A simple portfolio, to make my skills known to the world of work",
     "languages": {
       "JavaScript": 100
-    }
+    },
+    "img": "https://raw.githubusercontent.com/TheBugCommit/Portfolio/main/preview.jpg"
   }
 ]
