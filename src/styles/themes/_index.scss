@@ -1,0 +1,27 @@
+@use '../abstract/variables';
+
+:root {
+    --primary-color: #{variables.$primary-dark-color};
+    --secondary-color: #{variables.$secondary-dark-color};
+    --background-color: #{variables.$background-darkest-color};
+    --background-closer-color: #{variables.$background-dark-color};
+    --text-color: #{variables.$text-inverted-color};
+    --caret-color: #{variables.$caret-color};
+    --text-muted-color: #{variables.$text-inverted-muted-color};
+    --scrollbar-color: #{variables.$light-scrollbar-color};
+    --scrollbar-hover-color: #{variables.$light-scrollbar-hover-color};
+    --scrollbar-inactive-window-color: #{variables.$light-scrollbar-inactive-window-color};
+
+    @media (prefers-color-scheme: light) {
+        --primary-color: #{variables.$primary-light-color};
+        --secondary-color: #{variables.$secondary-light-color};
+        --background-color: #{variables.$background-lightest-color};
+        --background-closer-color: #{variables.$background-light-color};
+        --text-color: #{variables.$text-color};
+        --text-muted-color: #{variables.$text-muted-color};
+        --caret-color: #{variables.$caret-inverted-color};
+        --scrollbar-color: #{variables.$dark-scrollbar-color};
+        --scrollbar-hover-color: #{variables.$dark-scrollbar-hover-color};
+        --scrollbar-inactive-window-color: #{variables.$dark-scrollbar-inactive-window-color};
+    }
+}

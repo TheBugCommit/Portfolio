@@ -1,0 +1,14 @@
+@use '../abstract/variables';
+
+.name {
+    display: flex;
+    align-items: center;
+    font-family: Inconsolata, Consolas, monospace;
+    font-size: 0.5em;
+
+    span {
+        color: var(--text-muted-color);
+        font-size: 2em;
+        font-weight: 600;
+    }
+}

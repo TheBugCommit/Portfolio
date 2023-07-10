@@ -14,6 +14,12 @@ const nextConfig = {
             port: '',
             pathname: '/TheBugCommit/**',
           },
+          {
+            protocol: 'https',
+            hostname: 'picsum.photos',
+            port: '',
+            pathname: '**',
+          },
         ],
       },
 }

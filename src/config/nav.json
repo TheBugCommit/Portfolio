@@ -1,21 +1,26 @@
 [
     {
+        "id": "#hero",
         "name": "Home",
         "icon": ""
     },
     {
+        "id": "#about",
         "name": "About",
         "icon": ""
     },
     {
+        "id": "#timeline",
         "name": "Time Line",
         "icon": ""
     },
     {
+        "id": "#skills",
         "name": "Skills",
         "icon": ""
     },
     {
+        "id": "#projects",
         "name": "Projects",
         "icon": ""
     }

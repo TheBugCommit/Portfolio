@@ -1,0 +1,12 @@
+@use 'themes';
+@use 'abstract';
+@use 'core';
+
+.container {
+    width: 100%;
+}
+
+.scrollable {
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}

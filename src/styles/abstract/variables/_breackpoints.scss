@@ -1,0 +1,22 @@
+$_breakpoint-smobile: 575px;
+$_breakpoint-mobile: 576px;
+$_breakpoint-tablet: 768px;
+$_breakpoint-desktop: 1024px;
+$_breakpoint-large-desktop: 1200px;
+$_breakpoint-xlarge-desktop: 1400px;
+
+$small-mobile: 'small-mobile';
+$mobile: 'mobile';
+$tablet: 'tablet';
+$desktop: 'desktop';
+$large-desktop: 'large-desktop';
+$xlarge-desktop: 'xlarge-desktop';
+
+$breakpoints: (
+    "small-mobile" : "(max-width: #{$_breakpoint-smobile})",
+    "mobile" : "(min-width: #{$_breakpoint-mobile})",
+    "tablet" : "(min-width: #{$_breakpoint-tablet})",
+    "desktop" : "(min-width: #{$_breakpoint-desktop})",
+    "large-desktop" : "(min-width: #{$_breakpoint-large-desktop})",
+    "xlarge-desktop" : "(min-width: #{$_breakpoint-xlarge-desktop})",
+);

@@ -1,29 +1,39 @@
+import Image from 'next/image';
 import heroJSON from '@/config/hero'
-import SocialButton from '../buttons/SocialButton';
+import Button from '../buttons/Button';
+import SocialLink from '../links/SocialLink';
+import styles from '@/styles/modules/Hero.module.scss'
 
 export default function Hero() {
-    const birthYear = new Date(heroJSON.birth).getFullYear();
-    const actualYear = new Date().getFullYear();
-
-    const age = actualYear - birthYear;
-    const name = heroJSON.name;
-    const img = heroJSON.img;
-    const social = heroJSON.social;
+    const { name, profesion, img, social, birth, location, email } = heroJSON;
 
     return (
-        <div>
-            <div></div>
+        <>
             <div>
+                <Image src={img} width={200} height={200} alt='Profile picture' />
+            </div>
+            <div>
+
+                <div className={styles.name}>
+                    <span>&gt;&nbsp;</span><h1 className="writing">{name}</h1>
+                </div>
+                <p>{profesion}</p>
                 <div>
                     {social.map(sn => {
                         return (
-                            <SocialButton key={sn.name} title={sn.name} onClick={() => console.info(sn.link)}>
+                            <SocialLink key={sn.name} href={sn.link} title={sn.name}>
                                 {sn.name}
-                            </SocialButton>
+                            </SocialLink>
                         )
                     })}
                 </div>
+                <div>
+                    <div></div>
+                </div>
+                <Button>
+                    <span>Download CV</span>
+                </Button>
             </div>
-        </div>
+        </>
     )
 }

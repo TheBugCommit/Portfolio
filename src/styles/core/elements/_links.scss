@@ -1,0 +1,11 @@
+a {
+    color: var(--primary-color);
+    text-decoration: underline;
+    transition: color .2s ease-out;
+
+    &:hover,
+    &:focus {
+        color: var(--secondary-color);
+        transition: color .5s ease-out;
+    }
+}

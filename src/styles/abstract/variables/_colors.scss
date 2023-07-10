@@ -1,0 +1,42 @@
+//TODO: choose dark theme colors
+$_dark: #1B2431;
+$_platinum: #e3e3e3;
+$_nobel: #b0b0b0;
+$_light-tan: #ffeba8;
+$_tuna: #353746;
+$_lavander-purple: #967BB6;
+$_white: #ffffff;
+$_davy-grey: #545454;
+
+/**  Scrollbar **/
+$light-scrollbar-color: rgba(223 220 220 / 75%);
+$light-scrollbar-hover-color: rgba(205 205 205 / 75%);
+$light-scrollbar-inactive-window-color: $_davy-grey;
+
+$dark-scrollbar-color: rgba(223 220 220 / 75%);
+$dark-scrollbar-hover-color: rgba(205 205 205 / 75%);
+$dark-scrollbar-inactive-window-color: $_davy-grey;
+
+/** General **/
+$primary-dark-color: $_light-tan;
+$primary-light-color: $_light-tan;
+
+$secondary-dark-color: $_lavander-purple;
+$secondary-light-color: $_lavander-purple;
+
+$background-dark-color: $_tuna;
+$background-darkest-color: $_dark;
+
+$background-light-color: $_tuna;
+$background-lightest-color: $_dark;
+
+/** Text Colors **/
+$text-color: $_platinum;
+$text-inverted-color: $_platinum;
+
+$text-muted-color: $_nobel;
+$text-inverted-muted-color: $_nobel;
+
+/** Caret **/
+$caret-color: $text-color;
+$caret-inverted-color: $text-color;

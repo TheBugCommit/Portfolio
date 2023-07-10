@@ -1,0 +1,274 @@
+@use '../abstract/variables';
+@use '../core/animations' as *;
+@use 'sass:map';
+
+.menuIcon {
+
+    &:checked,
+    &:not(:checked) {
+        display: none;
+    }
+
+    &:checked+label {
+        position: fixed;
+        cursor: pointer;
+        top: 63px;
+        right: 75px;
+        display: block;
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        margin: 0;
+        z-index: 10;
+
+        &:before {
+            position: absolute;
+            content: '';
+            display: block;
+            width: 30px;
+            height: 2px;
+            z-index: 20;
+            top: 10px;
+            left: 0;
+            border-top: 2px solid #ececee;
+            border-bottom: 2px solid #ececee;
+            border-width: 0;
+            background-color: var(--text-color);
+            transform: rotate(45deg);
+            transition: border-width 100ms 340ms ease, 
+                        top 100ms 300ms cubic-bezier(0.23, 1, 0.32, 1), 
+                        height 100ms 300ms cubic-bezier(0.23, 1, 0.32, 1), 
+                        background-color 200ms 500ms ease, 
+                        transform 200ms 1700ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        &:after {
+            position: absolute;
+            content: '';
+            display: block;
+            width: 30px;
+            height: 2px;
+            z-index: 20;
+            top: 11px;
+            right: 0;
+            background-color: var(--text-color);
+            margin-top: 0;
+            transform: rotate(-45deg);
+            transition: width 100ms ease,
+                right 100ms ease,
+                margin-top 100ms 500ms ease,
+                transform 200ms 1700ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+    }
+
+    &:not(:checked)+label {
+        position: fixed;
+        top: 63px;
+        right: 75px;
+        display: block;
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+        z-index: 10;
+
+        &:before {
+            position: absolute;
+            content: '';
+            display: block;
+            width: 30px;
+            height: 20px;
+            z-index: 20;
+            top: 0;
+            left: 0;
+            border-top: 2px solid #ececee;
+            border-bottom: 2px solid #ececee;
+            transition: border-width 100ms 1500ms ease,
+                top 100ms 1600ms cubic-bezier(0.23, 1, 0.32, 1),
+                height 100ms 1600ms cubic-bezier(0.23, 1, 0.32, 1),
+                background-color 200ms ease,
+                transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        &:after {
+            position: absolute;
+            content: '';
+            display: block;
+            width: 22px;
+            height: 2px;
+            z-index: 20;
+            top: 11px;
+            right: 4px;
+            background-color: var(--text-color);
+            margin-top: -1px;
+            transition: width 100ms 1750ms ease,
+                right 100ms 1750ms ease,
+                margin-top 100ms ease,
+                transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
+        }
+    }
+
+    &:checked~.nav {
+        animation-play-state: paused;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -50%);
+        width: 200%;
+        background-color: var(--background-closer-color);
+        height: 200%;
+        transition: top 350ms 700ms cubic-bezier(0.23, 1, 0.32, 1),
+            right 350ms 700ms cubic-bezier(0.23, 1, 0.32, 1),
+            background-color 700ms 700ms cubic-bezier(0.23, 1, 0.32, 1),
+            transform 250ms 700ms ease,
+            width 750ms 1000ms cubic-bezier(0.23, 1, 0.32, 1),
+            height 750ms 1000ms cubic-bezier(0.23, 1, 0.32, 1);
+
+        ul {
+            li {
+                pointer-events: auto;
+                visibility: visible;
+                opacity: 1;
+                transform: translateY(0);
+                transition: opacity 350ms ease, transform 250ms ease;
+
+                &:nth-child(1) {
+                    transition-delay: 1400ms;
+                }
+
+                &:nth-child(2) {
+                    transition-delay: 1480ms;
+                }
+
+                &:nth-child(3) {
+                    transition-delay: 1560ms;
+                }
+
+                &:nth-child(4) {
+                    transition-delay: 1640ms;
+                }
+
+                &:nth-child(5) {
+                    transition-delay: 1740ms;
+                }
+            }
+        }
+    }
+}
+
+.nav {
+    position: fixed;
+    top: 33px;
+    right: 50px;
+    display: block;
+    width: 80px;
+    height: 80px;
+    padding: 0;
+    margin: 0;
+    z-index: 9;
+    overflow: hidden;
+    box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.3);
+    background-color: var(--background-closer-color);
+    animation: border-transform 7s linear infinite;
+    transition: top 350ms 1100ms cubic-bezier(0.23, 1, 0.32, 1),
+        right 350ms 1100ms cubic-bezier(0.23, 1, 0.32, 1),
+        background-color 700ms 700ms cubic-bezier(0.23, 1, 0.32, 1),
+        transform 250ms 1100ms ease,
+        width 650ms 400ms cubic-bezier(0.23, 1, 0.32, 1),
+        height 650ms 400ms cubic-bezier(0.23, 1, 0.32, 1);
+
+    ul {
+        container: menu-list / inline-size;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        display: block;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        z-index: 6;
+        text-align: center;
+        transform: translateY(-50%);
+        list-style: none;
+
+        li {
+            position: relative;
+            display: block;
+            width: 100%;
+            padding: 0;
+            margin: 10px 0;
+            text-align: center;
+            list-style: none;
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(30px);
+            transition: all 250ms linear;
+
+            &:nth-child(1) {
+                transition-delay: 250ms;
+            }
+
+            &:nth-child(2) {
+                transition-delay: 200ms;
+            }
+
+            &:nth-child(3) {
+                transition-delay: 150ms;
+            }
+
+            &:nth-child(4) {
+                transition-delay: 100ms;
+            }
+
+            &:nth-child(5) {
+                transition-delay: 50ms;
+            }
+
+            a {
+                position: relative;
+                font-size: 6cqw;
+                text-transform: uppercase;
+                line-height: 1.2;
+                font-weight: 800;
+                display: inline-block;
+                transition: all 250ms linear;
+                text-decoration: none;
+
+                &:hover {
+
+                    &:after {
+                        width: 100%;
+                    }
+                }
+
+                &:after {
+                    display: block;
+                    position: absolute;
+                    top: 50%;
+                    content: '';
+                    height: 2vh;
+                    margin-top: -1vh;
+                    width: 0;
+                    left: 0;
+                    background-color: var(--background-closer-color);
+                    opacity: 0.8;
+                    transition: width 250ms linear;
+                }
+            }
+        }
+    }
+}
+
+/** La multiplicacio, és un parche temporal  **/
+@container menu-list #{map.get(variables.$breakpoints, variables.$desktop)} {
+    .nav ul li a {
+        font-size: 5cqw;
+    }
+}
+
+@container menu-list #{map.get(variables.$breakpoints, variables.$large-desktop)} {
+    .nav ul li a {
+        font-size: 4cqw;
+    }
+}

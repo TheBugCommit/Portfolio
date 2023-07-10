@@ -1,7 +1,9 @@
 {
     "name": "Gerard Casas",
     "birth": "2002-10-03",
-    "img": "",
+    "profesion": "Full-Stack Developer",
+    "img": "https://picsum.photos/200",
+    "location": "Igualada, Catalunya",
     "social": [
         {
             "name": "GitHub",
@@ -17,10 +19,11 @@
             "name": "LinkedIn",
             "link": "https://github.com/TheBugCommit",
             "icon": ""
+        },
+        {
+            "name": "Email",
+            "link": "mailto:g3casas@gmail.com",
+            "icon": ""
         }
-    ],
-    "contact": {
-        "email": "g3casas@gmail.com",
-        "icon": ""
-    }
+    ]
 }

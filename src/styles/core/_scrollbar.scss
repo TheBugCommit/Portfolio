@@ -1,0 +1,46 @@
+* {
+    scrollbar-color: var(--scrollbar-color) var(--background-color);
+    scrollbar-gutter: auto;
+    scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+    overflow: visible;
+    width: 6px;
+    height: 16px;
+}
+
+::-webkit-scrollbar-thumb {
+    min-height: 28px;
+    padding: 100px 0 0;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background: var(--scrollbar-color);
+    background-clip: padding-box;
+    border-image: initial;
+
+    &:hover {
+        border: 1px solid transparent;
+        background: var(--scrollbar-hover-color);
+        background-clip: padding-box;
+    }
+
+    &:window-inactive {
+        background: var(--scrollbar-inactive-window-color);
+        background-clip: padding-box;
+
+        &:hover {
+            background: var(--scrollbar-hover-color);
+            background-clip: padding-box;
+        }
+    }
+}
+
+::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}

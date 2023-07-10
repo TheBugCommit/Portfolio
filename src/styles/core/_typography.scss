@@ -1,0 +1,23 @@
+@use '../abstract/variables';
+@use 'animations' as *;
+@use 'sass:string';
+
+$_name: 'Gerard Casas';
+
+.writing {
+    position: relative;
+    width: fit-content;
+    margin: 0;
+    color: var(--text-color);
+
+    &::after {
+        position: absolute;
+        right: 0;
+        width: 100%;
+        animation: writing 2s steps(string.length($_name)) forwards, blink 1s infinite;
+        animation-delay: 1s;
+        background: var(--background-color);
+        color: var(--caret-color);
+        content: "_";
+    }
+}
